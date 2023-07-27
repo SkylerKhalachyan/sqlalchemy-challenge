@@ -4,12 +4,13 @@
 # 
 For this project, we imagined we were going on a trip to Honolulu, Hawaii. To help with our trip planning, we decided to do a climate analysis of the area. We did a precipitation analysis that looked at the precipitation metrics over the previous year. We also did an analysis of the stations. We looked at the same 12-month period of temperature observations for those stations.  
 
+
 ### This Project was Built Utilizing:
-* [![sqlalachemy logo](Images/sql_alch_logo.jpg ìSQL Alchemy logoî)]( https://www.sqlalchemy.org/)
-* [![Flask app logo](Images/flask_app.png ìFlask app logoî)]( https://flask.palletsprojects.com/en/2.3.x/) 
-* [![Pandas Logo](Images/pandas.png ìPandas logoî)]( https://pandas.pydata.org/docs/) 
-* [![Matplotlib Logo](Images/matplotlib.png ìMatplotlib logoî)]( https://matplotlib.org/stable/index.html) 
-* [![Numpy Logo](Images/numpy.png ìNumpy Logoî)]( https://numpy.org/doc/)
+* [![sqlalachemy logo](Images/sql_alch_logo.jpg ‚ÄúSQL Alchemy logo‚Äù)]( https://www.sqlalchemy.org/)
+* [![Flask app logo](Images/flask_app.png ‚ÄúFlask app logo‚Äù)]( https://flask.palletsprojects.com/en/2.3.x/) 
+* [![Pandas Logo](Images/pandas.png ‚ÄúPandas logo‚Äù)]( https://pandas.pydata.org/docs/) 
+* [![Matplotlib Logo](Images/matplotlib.png ‚ÄúMatplotlib logo‚Äù)]( https://matplotlib.org/stable/index.html) 
+* [![Numpy Logo](Images/numpy.png ‚ÄúNumpy Logo‚Äù)]( https://numpy.org/doc/)
 * [![Python Logo](Images/python_logo.png "python logo")](https://www.python.org/)
 * [![Jupyter Logo](Images/Jupyter_logo.png "Jupyter logo")](https://jupyter.org/)
 
