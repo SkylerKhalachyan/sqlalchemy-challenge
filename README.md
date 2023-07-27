@@ -2,20 +2,18 @@
 #
 ### Overview of Project
 # 
-### Built With:
-* 
-* 
+For this project, we imagined we were going on a trip to Honolulu, Hawaii. To help with our trip planning, we decided to do a climate analysis of the area. We did a precipitation analysis that looked at the precipitation metrics over the previous year. We also did an analysis of the stations. We looked at the same 12-month period of temperature observations for those stations.  
 
-### User Set Up
-#
-To create a copy that is ready to perform on your local computer follow these simple steps.
+### This Project was Built Utilizing:
+* [![sqlalachemy logo](Images/sql_alch_logo.jpg “SQL Alchemy logo”)]( https://www.sqlalchemy.org/)
+* [![Flask app logo](Images/flask_app.png “Flask app logo”)]( https://flask.palletsprojects.com/en/2.3.x/) 
+* [![Pandas Logo](Images/pandas.png “Pandas logo”)]( https://pandas.pydata.org/docs/) 
+* [![Matplotlib Logo](Images/matplotlib.png “Matplotlib logo”)]( https://matplotlib.org/stable/index.html) 
+* [![Numpy Logo](Images/numpy.png “Numpy Logo”)]( https://numpy.org/doc/)
+* [![Python Logo](Images/python_logo.png "python logo")](https://www.python.org/)
+* [![Jupyter Logo](Images/Jupyter_logo.png "Jupyter logo")](https://jupyter.org/)
 
-#### Prerequisites
 
-#### Installation
-
-### Usage
-# 
 ### Acknowledgements
 #
 * Author: Skyler Khalachyan

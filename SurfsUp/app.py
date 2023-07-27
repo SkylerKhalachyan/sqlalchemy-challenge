@@ -44,79 +44,109 @@ app = Flask(__name__)
     # print("Server received request for 'Home' page...")
     # return "Welcome to my 'Home' page!" 
 
-# Create a dictionary to hold precipitation values
-# precip = {"date":"prcp"}
-
-# Perform a query to retrieve the data and precipitation scores
-
-date_precip_one_year = session.query(Measurement.date, Measurement.prcp)\
-    .filter(Measurement.date >= beginning_of_period)\
-    .all()
-
-
-# Save the query results as a Pandas DataFrame. Explicitly set the column names
-
-date_precip_df = pd.DataFrame(date_precip_one_year)
-date_precip_df
-
-date_precip_df.rename(columns={0:"Date",1:"Precipitation"},inplace=True)
-date_precip_df
-
-# Sort the dataframe by date
-
-date_precip_df.sort_values(by='Date', ascending =True, inplace=True)
-date_precip_df
-
-precip = date_precip_df.to_dict(precip)
-
 # 1 "/"
 @app.route('/')
 def home():
     print("Server received request for 'Home' page...")
-    return ("<h1>Home Page<h1/><br/>"
+    return ("<h1>Welcome to my home page<h1/><br/>"
             "The available routes are: <br/>"
             "/api/v1.0/precipitation <br/>"
             "/api/v1.0/stations <br/>"
-            "/api/v1.0/tobs"
+            "/api/v1.0/tobs <br/>"
+            "/api/v1.0/&lt;start&gt; <br/>"
+            "/api/v1.0/<start>/<end>"
+            )
+
+
+
 
 #2 "/api/v1.0/precipitation"
 @app.route('/api/v1.0/precipitation')
 def precipitation():
+# Create a dictionary to hold precipitation values
+# Perform a query to retrieve the data and precipitation scores
+# Find the most recent date in the data set.
+
+    most_recent_date_str = session.query(func.max(Measurement.date))\
+        .scalar()
+    most_recent_date_str
+# Starting from the most recent data point in the database. 
+    most_recent_date = dt.date.fromisoformat(most_recent_date_str)
+# Calculate the date one year from the last date in data set.
+    beginning_of_period = most_recent_date - dt.timedelta(days=365) 
+
+    date_precip_one_year = session.query(Measurement.date, Measurement.prcp)\
+        .filter(Measurement.date >= beginning_of_period)\
+        .all()
+
+    session.close()
+
+    precip_data = []
+
+    for date, prcp in date_precip_one_year:
+        precip_dict = {}
+        precip_dict[date] = prcp
+        precip_data.append(precip_dict)
 
     print("Server received request for 'precipitation' page...")
-    return jsonify(precip)
+    return jsonify(precip_data)
+
+
 
 #3 "/api/v1.0/stations"
 @app.route('/api/v1.0/stations')
 def stations():
-
+    # return a list of all stations
+    stations_tuple = session.query(Measurement.station).group_by(Measurement.station).\
+                order_by(func.count(Measurement.station).desc()).all()
+    stations_list = []
+    # create list from tuple values
+    for val in stations_tuple:
+        stations_list.append(val[0])
+    # close session
+    session.close()
     print("Server revceived request for 'stations' page...")
-    return
+    return jsonify(stations_list)
 
 #4 "/api/v1.0/tobs"
 @app.route('/api/v1.0/tobs')
 def tobs():
+    year_ago = dt.date(2017, 8, 23) - dt.timedelta(days=365)
 
+    tobs_route_q = session.query(Measurement.tobs).\
+    filter(Measurement.station == 'USC00519281',\
+           Measurement.date > year_ago).all()
+    session.close()
+
+    tobs_list = list(np.ravel(tobs_route_q))
+   
     print("Server received request for 'tobs' page...")
-    return
+    return jsonify(tobs_list)
 
 #5 "/api/v1.0/<start>"
-@app.route('/api/v1.0/<start>')
-def start():
-
-    print("Server received request for 'start' page...")
-    return
 #6 "/api/v1.0/<start>/<end>"
+#Input only start date 
+@app.route('/api/v1.0/<start>')
+#Input both start and end date
 @app.route('/api/v1.0/<start>/<end>')
-def startend():
+# Typing code into the parenthesis because these are inputs. The end 
+# date will not always be input, we want to default this date to the most recent date. 
+# The end date can be overwritten by the end user input.
+# Whatever you input into the parenthesis is a variable.
+# This must match exactly, later within the scope of the function. 
+def stats(start, end=dt.date.max.isoformat()):
+    sel = [func.min(Measurement.tobs),
+        func.max(Measurement.tobs),
+        func.avg(Measurement.tobs)]
+# *sel grabs above
+    tobs_stats = session.query(*sel)\
+        .filter(Measurement.date >= start)\
+        .filter(Measurement.date <= end)\
+        .first()
+    
+    session.close()
 
-    print("Server received request for 'startend' page...")
-    return
-
-
-
-
-
+    return jsonify(list(tobs_stats))
 
 
 
