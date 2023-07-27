@@ -1,4 +1,4 @@
-﻿# SQLALCHEMY-Challenge
+# SQLALCHEMY-Challenge
 #
 ### Overview of Project
 # 
@@ -25,6 +25,6 @@ For this project, we imagined we were going on a trip to Honolulu, Hawaii. To he
      - Instructor: Ahmad Sweed 
      - Tutor:
      - Reference Data:
-       - 	
+      
          
 
