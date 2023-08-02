@@ -18,10 +18,10 @@ For this project, our cohort imagined we were going on a trip to Honolulu, Hawai
 * Author: Skyler Khalachyan
 * Contributors:
      - Study Groups: Collaborated with multiple students to better understand the project.
-     - Students: Katie Djhan, Vinny Shankar, Hany Dief 
+     - Students: [Katie Djhan](https://github.com/katiedjahan), [Vinny Shankar](https://github.com/VinnyShankar), [Hany Dief](https://github.com/hanydief) 
      - Program: UC Berkeley Extension Data Analytics Bootcamp 
      - Starter Code: Starter code was provided. 
-     - Instructor: Ahmad Sweed 
+     - Instructor: [Ahmad Sweed](https://github.com/ahmadswd) 
      - Tutor: Kourt Bailey
      - Reference Data:
 		- [Flask Mega-Tutorial]( https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
